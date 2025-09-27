@@ -1,0 +1,19 @@
+{
+  "solution": {
+    "path": "DiskInfoDotnet.slnx",
+    "projects": [
+      "src\\CsharpSrc\\DiskInfoDotnet.Cleanup\\DiskInfoDotnet.Cleanup.csproj",
+      "src\\CsharpSrc\\DiskInfoDotnet.Demo.NetAll\\DiskInfoDotnet.Demo.NetAll.csproj",
+      "src\\CsharpSrc\\DiskInfoDotnet.Demo\\DiskInfoDotnet.Demo.csproj",
+      "src\\CsharpSrc\\DiskInfoDotnet.Extension\\DiskInfoDotnet.Extension.csproj",
+      "src\\CsharpSrc\\DiskInfoDotnet.Related\\DiskInfoDotnet.Related.csproj",
+      "src\\CsharpSrc\\DiskInfoDotnet\\DiskInfoDotnet.csproj",
+      "src\\CsharpSrc\\JunkCodes\\JunkCodes.csproj",
+      "src\\CsharpSrc\\Os.Management\\Os.Management.csproj",
+      "src\\SharedSrc\\DiskInfoDotnet.ImportantLib.Shared\\DiskInfoDotnet.ImportantLib.Shared.shproj",
+      "src\\SharedSrc\\DiskInfoDotnetParse.Shared\\DiskInfoDotnetParse.Shared.shproj",
+      "src\\SharedSrc\\FrameWorkEngine.Unsafe\\FrameWorkEngine.Unsafe.shproj",
+      "src\\SharedSrc\\HelperClass\\HelperClass.shproj"
+    ]
+  }
+}
