@@ -10,7 +10,6 @@ using Nj = Newtonsoft.Json;
 
 public class LoadMScopModule
 {
-    //Win32_BIOS_Infos
     public ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List { get; protected set; }
     public ObservableCollection<Win32_OperatingSystem_Infos>? win32_OperatingSystem_Infos_List { get; protected set; }
     public ObservableCollection<Win32_ComputerSystem_Infos>? win32_ComputerSystem_Infos_List { get; protected set; }
@@ -47,30 +46,18 @@ public class LoadMScopModule
     string JSQueryPersonal(ManagementBaseObject? vals, string intanceStr)
     {
         var _itemInfo = vals?.GetText(TextFormat.Mof);
-        Console.WriteLine(_itemInfo);
         var _itemInfoJs = _itemInfo?
             .Replace($"\ninstance of {intanceStr}\n", "").Replace(";", ",").Replace("=", ":");
         _itemInfoJs = _itemInfoJs?.Remove(_itemInfoJs.Length - 2).Replace("FALSE", "false").Replace("TRUE", "true");
         _itemInfoJs = _itemInfoJs?.Replace(": {", ": [").Replace("},", "],");
 
         return _itemInfoJs ?? throw new HelperClass.GettingExceptions($"get exception at {nameof(LoadMScopModule)}");
-
-        #region MyRegion
-        //var _driveInfoJs = vals.Insert(vals.IndexOf('}', 0), "]");
-        //_driveInfoJs = _driveInfoJs.Replace("]},", "],");
-
-        //_driveInfoJs = _driveInfoJs.Insert(_driveInfoJs.IndexOf('}', 0), "]");
-        //_driveInfoJs = _driveInfoJs.Replace("]},", "],");
-
-        //return _driveInfoJs = _driveInfoJs.Remove(_driveInfoJs.Length - 2).Replace("FALSE", "false").Replace("TRUE", "true"); 
-        #endregion
     }
 
     T JsWorker<T>(ManagementBaseObject? managementBases, string intanceStr)
     {
         if (Nj.JsonConvert.DeserializeObject<T>(JSQueryPersonal(managementBases, intanceStr)) is T win32_OperatingSystem_Infos and not null)
         {
-            //values?.Add(win32_OperatingSystem_Infos);
             return win32_OperatingSystem_Infos;
         }
 
@@ -179,14 +166,6 @@ public class LoadMScopModule
 
     private void GetPointingDevice()
     {
-        //CimSession session = CimSession.Create("localHost");
-        //IEnumerable<CimInstance> queryInstance = session.QueryInstances(@"root\cimv2", "WQL", "SELECT * FROM Win32_ComputerSystem");
-        //foreach (CimInstance cimObj in queryInstance)
-        //{
-        //    Console.WriteLine(cimObj.CimInstanceProperties["Name"].ToString());
-        //}
-
-
         foreach (ManagementObject item in new ManagementObjectSearcher(new SelectQuery("Win32_USBHub")).Get())
         {
             Win32_USBHub_Infos_List?.Add(JsWorker<Win32_USBHub_Infos>(item, "Win32_USBHub"));
