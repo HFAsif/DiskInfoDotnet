@@ -82,81 +82,8 @@ public class MainViewModule : Task
         }
 
         writer.Close();
-
-
-        #region MyRegion
-        //var GetAllNetfrDirs = directories.Any(a => a.StartsWith("net4"));
-        //foreach ( var dir in GetAllNetfrDirs)
-        //{
-        //    writer.WriteLine(dir);
-        //}
-
-        //writer.WriteLine("Successfull to move to {0}", AllOutPaths);
-        ////using (StreamWriter writer = new StreamWriter(TextCreate, true)) // false for overwrite
-        ////{
-        ////    writer.WriteLine(directories.Length);
-        ////    writer.Close();
-        ////}
-
-        ////GC.Collect();
-        ////GC.WaitForPendingFinalizers();
-        ////GC.SuppressFinalize(this);
-
-        //for ( int i = 0; i < directories.Length; i++ )
-        //{
-        //    var FoldLocation = directories[i];
-        //    //var DirName = Path.Combine(directories[i], "Mydependencies");
-        //    //Directory.CreateDirectory(DirName);
-        //    //writer.WriteLine(DirName);
-
-        //    var DirFiles = Directory.GetFiles(FoldLocation);
-        //    var createDep = Path.Combine(FoldLocation, "Mydependencies");
-        //    writer.WriteLine(Environment.NewLine);
-
-        //    if (!Directory.Exists(createDep))
-        //    {
-        //        Directory.CreateDirectory(createDep);
-        //    }
-
-        //    foreach (var dirFile in DirFiles)
-        //    {
-
-        //        var asmName = Path.GetFileNameWithoutExtension(dirFile);
-        //        if (!asmName.Contains("DiskInfoDotnet.Demo.NetAll"))
-        //        {
-        //            //var MovingFile = Path.Combine(createDep, Path.GetFileName(dirFile));
-        //            //File.Move(dirFile, MovingFile);
-        //            //writer.WriteLine("Successfull to move to {0}", MovingFile);
-        //        }
-
-        //    }
-
-        //}
-
-
-
-
-
-        //File.AppendAllText(TextCreate, directories.Count().ToString());
-
-        //foreach (var dir in directories)
-        //{
-        //    var DirName = Path.Combine(dir, "Mydependencies");
-        //    //var createDep = Directory.CreateDirectory(DirName);
-        //    File.AppendAllText(TextCreate, Environment.NewLine + DirName);
-        //}
-
-        //File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "atext.txt"), string.Join(Environment.NewLine, directories));
-
-        //Debug.WriteLine($"asembly info {Assembly} config Infos {Config}"); 
-        #endregion
-
-
         return true;
     }
 
-    //private static void Main( string[] args)
-    //{
-    //    new MainViewModule().Execute();
-    //}
+    
 }
