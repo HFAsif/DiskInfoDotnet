@@ -1,0 +1,23 @@
+<Project >
+	
+	<PropertyGroup>
+		<NoWarn>CS0420;CS0219;CS0168;CS0252;CS0649;CS0108;CS0162;CS0169;CS3021;CS1998;SYSLIB0014;CS8632;CS0618;CS0114;SYSLIB0021;SYSLIB0017;CS8597</NoWarn>
+	</PropertyGroup>
+
+	<Choose>
+		<When Condition="'$(TargetFramework)' == 'net20-Client' OR '$(TargetFramework)' == 'net35-Client' ">
+			<PropertyGroup Condition="'$(TargetFramework)' == 'net20-Client'">
+				<DefineConstants>NET_4_5;NET20</DefineConstants>
+				<!--<NoWarn>CS0649;CS0108;CS0168;CS0162</NoWarn>-->
+			</PropertyGroup>
+			<PropertyGroup Condition="'$(TargetFramework)' == 'net35-Client'">
+				<!--<NoWarn>CS0420;CS0219;CS0168;CS0252;CS0649</NoWarn>-->
+			</PropertyGroup>
+		</When>
+	</Choose>
+
+	<ItemGroup>
+		<Reference Condition="!$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','6.0')) And '$(TargetFramework)' != 'netcoreapp3.1'" Include="System.Windows.Forms" />
+	</ItemGroup>
+
+</Project>

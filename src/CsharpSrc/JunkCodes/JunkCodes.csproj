@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkscustom.props" />
+  <PropertyGroup>
+  </PropertyGroup>
+
+</Project>

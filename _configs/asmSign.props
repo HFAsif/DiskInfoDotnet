@@ -1,0 +1,9 @@
+<Project >
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<Compile Include="$(SolutionDir)src\LinkedSrc\SignedClass.cs">
+			<Link>SignedClass.cs</Link>
+		</Compile>
+	</ItemGroup>
+</Project>

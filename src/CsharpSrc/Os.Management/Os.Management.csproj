@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkscustom.props" />
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkAnothers.props" />
+	<Import Project="$(SolutionDir)_configs/asmSign.props" />
+	<PropertyGroup>
+		<NoWarn>CA1416</NoWarn>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+
+	<Choose>
+		
+		<When Condition="$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','8.0'))">
+			<ItemGroup>
+				<PackageReference Include="System.Management" Version="9.0.9" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','6.0'))">
+			<ItemGroup>
+				<PackageReference Include="System.Management" Version="6.0.2" />
+			</ItemGroup>
+		</When>
+
+		<When Condition="$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','4.5'))">
+			<ItemGroup>
+				<Reference Include="System.Management" />
+			</ItemGroup>
+		</When>
+		
+		<!--<Otherwise>
+			<ItemGroup>
+				<ProjectReference Include="..\System.Management\System.Management.csproj" />
+			</ItemGroup>
+		</Otherwise>-->
+
+	</Choose>
+	
+	
+	<ItemGroup>
+		<ProjectReference Include="..\DiskInfoDotnet.Extension\DiskInfoDotnet.Extension.csproj" />
+	</ItemGroup>
+</Project>

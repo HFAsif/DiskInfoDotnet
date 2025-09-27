@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+
+	<UsingTask TaskName="MainViewModule"
+				   AssemblyFile="TaskUsingFolder\DiskInfoDotnet.Related.dll"/>
+
+	<Target Name="CustomActionsAfterBuild" AfterTargets="Build">
+		<MainViewModule SolutionDirectory="$(SolutionDir)" AllOutPaths="$(OutputPath)" />
+		<Message Text="Successfull to $(TargetPath)" Importance="High" />
+	</Target>
+	
+	<!--<Target Name="CustomActionsAfterBuild" AfterTargets="Build">
+		<PropertyGroup>
+			<FolderToMoveDir>$(OutputPath)</FolderToMoveDir>
+			<FolderToMove>$(FolderToMoveDir)dependencies\</FolderToMove>
+		</PropertyGroup>
+		<ItemGroup>
+			<FilesToMoveDll Include="$(FolderToMoveDir)*.dll" />
+			<FilesToMoveXml Include="$(FolderToMoveDir)*.xml" />
+		</ItemGroup>
+		
+		<MakeDir Directories="$(FolderToMove)" Condition="!Exists('$(FolderToMove)')" />
+		<Move SourceFiles="@(FilesToMoveDll)" Condition="Exists('$(FolderToMove)')" DestinationFolder="$(FolderToMove)" />
+		<Move SourceFiles="@(FilesToMoveXml)" Condition="Exists('$(FolderToMove)')" DestinationFolder="$(FolderToMove)" />
+		
+		<Message Importance="High" Text="success full to moved to $(OutputPath)"></Message>
+	</Target>-->
+	
+</Project>
