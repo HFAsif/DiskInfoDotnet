@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>b28ce50a-0968-4ee0-a946-cf0c35e4cb3e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>DiskInfoDotnet.ImportantLib.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AdvanceArgOption.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandLineParser.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalFuncs.cs" />
+  </ItemGroup>
+</Project>

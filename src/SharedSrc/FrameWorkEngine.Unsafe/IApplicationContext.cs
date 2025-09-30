@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FrameWorkEngine;
+[ComImport]
+[InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+[Guid("7c23ff90-33af-11d3-95da-00a024a85b51")]
+internal interface IApplicationContext
+{
+    void SetContextNameObject(IAssemblyName pName);
+
+    void GetContextNameObject(out IAssemblyName ppName);
+
+    void Set([MarshalAs(UnmanagedType.LPWStr)] string szName, int pvValue, uint cbValue, uint dwFlags);
+
+    void Get([MarshalAs(UnmanagedType.LPWStr)] string szName, out int pvValue, ref uint pcbValue, uint dwFlags);
+
+    void GetDynamicDirectory(out int wzDynamicDir, ref uint pdwSize);
+}

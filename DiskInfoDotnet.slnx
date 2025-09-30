@@ -1,0 +1,40 @@
+<Solution>
+  <Folder Name="/Libs/" />
+  <Folder Name="/Libs/ConfigFiles/">
+    <File Path="_configs/appsettings.json" />
+    <File Path="_configs/asmSign.props" />
+    <File Path="_configs/builderUp.props" />
+    <File Path="_configs/Custom.props" />
+    <File Path="_configs/DigitalSignFunction.props" />
+    <File Path="_configs/dotnetFour.props" />
+    <File Path="_configs/dotnetframeworkAnothers.props" />
+    <File Path="_configs/dotnetframeworkscustom.props" />
+    <File Path="_configs/dotnetframeworkSingle.props" />
+    <File Path="_configs/ExeConfigs.props" />
+    <File Path="_configs/Extensions.props" />
+    <File Path="_configs/finishingElements.props" />
+    <File Path="_configs/SavedConfigs.props" />
+    <File Path="_configs/UnsafeDotnetElements.props" />
+  </Folder>
+  <Folder Name="/Libs/CsharpSrc/">
+    <Project Path="src/CsharpSrc/DiskInfoDotnet.Cleanup/DiskInfoDotnet.Cleanup.csproj" />
+    <Project Path="src/CsharpSrc/DiskInfoDotnet.Extension/DiskInfoDotnet.Extension.csproj" />
+    <Project Path="src/CsharpSrc/DiskInfoDotnet.Related/DiskInfoDotnet.Related.csproj" />
+    <Project Path="src/CsharpSrc/DiskInfoDotnet.Sm.Management/DiskInfoDotnet.Sm.Management.csproj" Id="dbcd20bc-d6a7-448c-af1f-0150cc22fdea" />
+    <Project Path="src/CsharpSrc/DiskInfoDotnet/DiskInfoDotnet.csproj" />
+    <Project Path="src/CsharpSrc/JunkCodes/JunkCodes.csproj" />
+  </Folder>
+  <Folder Name="/Libs/SharedSrc/">
+    <Project Path="src/SharedSrc/DiskInfoDotnet.ImportantLib.Shared/DiskInfoDotnet.ImportantLib.Shared.shproj" Id="b28ce50a-0968-4ee0-a946-cf0c35e4cb3e" />
+    <Project Path="src/SharedSrc/DiskInfoDotnetParse.Shared/DiskInfoDotnetParse.Shared.shproj" Id="88a7f139-50ba-4297-b626-81c621262f95" />
+    <Project Path="src/SharedSrc/FrameWorkEngine.Unsafe/FrameWorkEngine.Unsafe.shproj" Id="4a4dce20-34ce-4e73-aaa7-63a88d18245c" />
+    <Project Path="src/SharedSrc/HelperClass/HelperClass.shproj" Id="90cf9b0a-0dc5-42a1-916a-784b362d6c34" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Project Path="src/CsharpSrc/DiskInfoDotnet.Demo.NetAll/DiskInfoDotnet.Demo.NetAll.csproj" />
+  <Project Path="src/CsharpSrc/DiskInfoDotnet.Demo/DiskInfoDotnet.Demo.csproj" />
+</Solution>

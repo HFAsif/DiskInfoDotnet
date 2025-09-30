@@ -1,0 +1,23 @@
+<Project>
+
+	<PropertyGroup>
+		<AnalysisLevel>latest</AnalysisLevel>
+		<LangVersion>12.0</LangVersion>
+		<DefineConstants Condition="'$(Platform)' == 'x64'">_x64bit_</DefineConstants>
+		<DefineConstants Condition="'$(Platform)' == 'x86'">_x86bit_</DefineConstants>
+		<DefineConstants Condition="'$(Platform)' == 'AnyCPU'">_AnyCPU_</DefineConstants>
+		<DefineConstants>$(DefineConstants);JMICRON_USB_RAID_SUPPORT</DefineConstants>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+	
+	<!--<Choose>
+		<When Condition="'$(AllowUnsafeBlocks)' == 'true'">
+			<PropertyGroup>
+				<DefineConstants>$(DefineConstants);_Unsafe_</DefineConstants>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			
+		</Otherwise>
+	</Choose>-->
+</Project>

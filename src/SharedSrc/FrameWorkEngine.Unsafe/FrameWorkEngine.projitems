@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>4a4dce20-34ce-4e73-aaa7-63a88d18245c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FrameWorkEngine.Unsafe</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Architecture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssertEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssertFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AssertFilters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Buffer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CompatibilityFlag.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CompatibilitySwitches.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContractFailureKind.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Design\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Design\SafeNativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Design\SR.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Design\SRCategoryAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Design\SRDescriptionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Design\UnsafeNativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Internal\HandleChangeEventHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Internal\HandleCollector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\System.ComponentModel.Design\CollectionEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\System.ComponentModel\TypeDescriptorHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\System.Windows.Forms.Design\VsPropertyGrid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Windows\Design\RTLAwareMessageBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Windows\Forms\ClientUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomFramework\Windows\Forms\ImageListUtils.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EnvironmentEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExceptionArgument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExceptionResource.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FriendAccessAllowedAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IApplicationContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IAssemblyEnum.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IAssemblyName.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonitorEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net9\IReadOnlyCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net9\System.Collections.Generic\KeyValuePair.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net9\System.Diagnostics.CodeAnalysis\NotNullIfNotNullAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net9\System.Runtime.CompilerServices\CallerArgumentExpressionAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net9\System.Runtime.CompilerServices\CollectionBuilderAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Net9\System.Runtime.CompilerServices\TypeForwardedFromAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OSPlatform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RuntimeInformation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeAccessTokenHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeBSTRHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeBuffer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeFileMappingHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeFindHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeLocalAllocHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeLsaLogonProcessHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeLsaMemoryHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeLsaPolicyHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeLsaReturnBufferHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeRegistryHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SafeWaitHandle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringBuilderCache.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringHandleOnStack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PortableReflection\System.Reflection.Metadata\System.Reflection.Metadata.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThrowHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TokenType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TraceFormat.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Win32Native.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)PortableReflection\System.Collections.Immutable\" />
+  </ItemGroup>
+</Project>

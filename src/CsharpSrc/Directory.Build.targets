@@ -1,0 +1,16 @@
+<Project>
+	<PropertyGroup>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		
+		<!--<AssemblyOriginatorKeyFile>$(SolutionDir)DiskInfoDotnetSignatureKey.snk</AssemblyOriginatorKeyFile>-->
+		
+		<!--<AssemblyOriginatorKeyFile>$(SolutionDir)DiskInfoArtificial.snk</AssemblyOriginatorKeyFile>
+		<SignAssembly>true</SignAssembly>-->
+		<!--<DelaySign>true</DelaySign>-->
+		 <!--<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>-->
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
+		<SignAssembly>true</SignAssembly>
+	</PropertyGroup>
+</Project>

@@ -1,0 +1,15 @@
+<Project >
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)src\LinkedSrc\FinishingClass.cs">
+			<Link>FinishingClass.cs</Link>
+		</Compile>
+		<Compile Include="$(SolutionDir)src\LinkedSrc\FinishingClassAttr.cs">
+			<Link>FinishingClassAttr.cs</Link>
+		</Compile>
+
+		<Compile Include="$(SolutionDir)src\LinkedSrc\DiskInfoDotnetProgram.cs">
+			<Link>DiskInfoDotnetProgram.cs</Link>
+		</Compile>
+	</ItemGroup>
+</Project>

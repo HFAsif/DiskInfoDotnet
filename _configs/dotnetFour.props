@@ -1,0 +1,104 @@
+<Project >
+
+	<PropertyGroup>
+		<NoStdLib>true</NoStdLib>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="mscorlib">
+			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\mscorlib.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Runtime.CompilerServices.Unsafe">
+			<HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\PublicAssemblies\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+		
+		<Reference Include="System.Management" />
+		
+		<!--<Reference Include="System.Management">
+			<HintPath>C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Management.dll</HintPath>
+		</Reference>-->
+		
+		<!--<Reference Include="System.Management">
+			<HintPath>C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Management.dll</HintPath>
+		</Reference>-->
+	</ItemGroup>
+	
+</Project>
+
+<!--<Project >
+
+	--><!--C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8--><!--
+
+	<PropertyGroup>
+		<NoStdLib>true</NoStdLib>
+		--><!--<ThisProjectAvailable>false</ThisProjectAvailable>--><!--
+	</PropertyGroup>
+
+	--><!--<Import Project="CustomBuildSteps.targets" Condition="'$(MSBuildProjectFile.EndsWith('WebApp.csproj'))'" />--><!--
+
+	--><!--<PropertyGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		--><!-- Properties for .NET Framework --><!--
+	</PropertyGroup>--><!--
+
+	<ItemGroup Condition="$(DefineConstants.Contains('ThisProjectAvailable'))">
+		<Reference Include="System.Management">
+			<HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Management.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	
+	<Choose>
+		<When Condition="$(DefineConstants.Contains('ThisProjectAvailable'))">
+
+			
+			
+			--><!--<ItemGroup>
+				<Reference Include="System.Management">
+					<HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Management.dll</HintPath>
+				</Reference>
+			</ItemGroup>--><!--
+		</When>
+		<Otherwise>
+			
+		</Otherwise>
+	</Choose>
+	
+	
+	<ItemGroup>
+		<Reference Include="mscorlib">
+			<HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\mscorlib.dll</HintPath>
+		</Reference>
+
+		<Reference Include="System.Runtime.CompilerServices.Unsafe">
+			<HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\PublicAssemblies\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+
+		
+		
+	</ItemGroup>
+
+
+	--><!--
+	<ItemGroup Condition="'$(Platform)'=='x86' And '$(TargetFramework)'=='net40-Client' Or '$(TargetFramework)'=='net40'">
+		<Reference Include="mscorlib">
+			<HintPath>$(SolutionDir)CustomMscorlib\ThirtyTwo\mscorlib.NoSN_mod.dll</HintPath>
+		</Reference>
+
+		<Reference Include="System.Runtime.CompilerServices.Unsafe">
+			<HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\PublicAssemblies\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	
+	<ItemGroup Condition="'$(Platform)'=='x64' And '$(TargetFramework)'=='net40-Client' Or '$(TargetFramework)'=='net40'">
+		<Reference Include="mscorlib">
+			<HintPath>$(SolutionDir)CustomMscorlib\SixtyFour\mscorlib_mod.NoSN_.dll</HintPath>
+		</Reference>
+
+		
+		<Reference Include="System.Runtime.CompilerServices.Unsafe">
+			<HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\PublicAssemblies\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+	</ItemGroup>--><!--
+	
+	
+</Project>-->

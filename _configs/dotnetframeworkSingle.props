@@ -1,0 +1,7 @@
+<Project >
+	
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+	</PropertyGroup>
+
+</Project>

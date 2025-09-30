@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>88a7f139-50ba-4297-b626-81c621262f95</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>DiskInfoDotnetParse.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\CastInfos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\CrystalDiskInfoDotnetBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\CrystalDiskInfoDotnetLoad.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\CrystalDiskInfoDotnetLoadInformation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ExtendedInfos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ExtendedInfosStruct.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ExtendOptimizedAbstract.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ExtendOptimizedAttr.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ExtendOptimizedWorker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\GetDriveInfoBool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ICrystalDiskInfoDotnet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\ICrystalDiskInfoDotnetLoad.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\IDiskInfoArtificialCheck.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\InfoExtractorClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\InfoExtractorStatic.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\OptimizedInfos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\StaticMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OutPutInfos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CheckDiskInfos\TargetInfos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExtractionType.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+﻿using System.Reflection;
+
+
+[assembly: AssemblyKeyFile("C:\\Users\\Admin\\Desktop\\DiskInfoDotnet\\DiskInfoDotnetSignatureKey.snk")]
+
+
+#if NET5_0_OR_GREATER
+
+[assembly: AssemblyDelaySign(true)]
+[assembly: AssemblySignatureKey(
+"002400000c8000009400000006020000002400005253413100040000010001005d361fa51d7da3d6a04203ae19652d2e6303d0cf9b52e21a9446c0e05f5a8cac826946ecd4a72501bc10dea13c2c7b71eab22b53555c85b6d16b31ec01d29522bbe0fe746147db59b06667eedf06b816247059c870f6abfdd3ca7e2deb0cc2a6ba4229fb4f84818455676197af20448050085c1daa72debc44bf8c851ace8dcf",
+"f2fb6463a5428b376390ea10ee2c105757dc369aa7a7047ea09c5f0e9f0d461e2898f29e6f6011116d6032c74e897a8c16120e9d4900e07276e9e354187f0177069b7eab3ab3d9a1b95dc6ddba3af42cf8ee612737127baa10ffad2c4b1b4c0133bf5b7851ff75130ad9f5bdee603a8c364a5dce2cb296ab57c146810c267759"
+)]
+#else
+
+
+#endif
+

@@ -1,0 +1,35 @@
+<Project >
+
+	<Import Condition="'$(TargetFramework)' == 'net40' Or '$(TargetFramework)' == 'net40-Client'" Project="$(SolutionDir)_configs/dotnetFour.props" />
+	
+	<PropertyGroup Condition="'$(Configuration)'=='net_8_0_Debug'">
+		<TargetFramework>net8.0-windows</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='net_4_8_Debug'">
+		<TargetFrameworks>net48</TargetFrameworks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<TargetFrameworks>net8.0;net9.0;net48;</TargetFrameworks>
+	</PropertyGroup>
+
+
+	<PropertyGroup>
+		
+	</PropertyGroup>
+
+	<Choose>
+
+		<When Condition="$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','4.6.2'))">
+			<ItemGroup>
+				<PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
+			</ItemGroup>
+		</When>
+
+		<Otherwise>
+		</Otherwise>
+
+	</Choose>
+	
+</Project>

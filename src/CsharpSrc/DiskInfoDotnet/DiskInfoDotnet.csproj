@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkscustom.props" />
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkAnothers.props" />
+	<Import Project="$(SolutionDir)_configs/asmSign.props" />
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+	  <RootNamespace>DiskInfoDotnet</RootNamespace>
+	  <NoWarn>CS0649</NoWarn>
+	  <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DiskInfoDotnet.Sm.Management\DiskInfoDotnet.Sm.Management.csproj" />
+  </ItemGroup>
+
+	
+
+	
+</Project>

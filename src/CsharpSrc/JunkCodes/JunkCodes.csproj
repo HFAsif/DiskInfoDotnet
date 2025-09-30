@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkscustom.props" />
+  <PropertyGroup>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Class1.cs" />
+    <Compile Remove="NewFolder1\FinishingClass.cs" />
+    <Compile Remove="NewFolder1\FinishingClassAttr.cs" />
+    <Compile Remove="NewFolder1\ProgramEx.cs" />
+    <Compile Remove="NewFolder\FinishingClass.cs" />
+    <Compile Remove="NewFolder\FinishingClassAttr.cs" />
+    <Compile Remove="ProgramEx.cs" />
+    <Compile Remove="TheClassToUse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Class1.cs" />
+    <None Include="NewFolder1\FinishingClass.cs" />
+    <None Include="NewFolder1\FinishingClassAttr.cs" />
+    <None Include="NewFolder1\ProgramEx.cs" />
+    <None Include="NewFolder\FinishingClass.cs" />
+    <None Include="NewFolder\FinishingClassAttr.cs" />
+    <None Include="NewFolder\ProgramEx.cs" />
+    <None Include="TheClassToUse.cs" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkscustom.props" />
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkAnothers.props" />
+	<Import Project="$(SolutionDir)_configs/asmSign.props" />
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);ThisProjectAvailable</DefineConstants>
+	</PropertyGroup>
+
+	<!--<PropertyGroup>
+		<Configurations>Debug;Release;net_4_0_Debug</Configurations>
+		<Platforms>AnyCPU;x86;x64</Platforms>
+	</PropertyGroup>-->
+
+	<Import Project="$(SolutionDir)_configs/Extensions.props" />
+	<Import Condition="'$(AllowUnsafeBlocks)' == 'true' And !$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','6.0'))" Project="..\..\SharedSrc\FrameWorkEngine.Unsafe\FrameWorkEngine.projitems" Label="Shared" />
+	<Import Project="..\..\SharedSrc\HelperClass\HelperClass.projitems" Label="Shared" />
+
+
+	
+
+</Project>

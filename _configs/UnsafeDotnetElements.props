@@ -1,0 +1,17 @@
+<Project >
+
+	<Import Project="..\..\SharedSrc\HelperClass\HelperClass.projitems" Label="Shared" />
+	<Import Condition=" '$(TargetFramework)' == 'net20-Client' OR '$(TargetFramework)' == 'net35-Client' " Project="..\..\SharedSrc\DotNetTwoAndThreeFiveHelpers\DotNetTwoAndThreeFiveHelpers.projitems" Label="Shared" />
+	<!--<Import Condition=" '$(TargetFramework)' == 'net20-Client' OR '$(TargetFramework)' == 'net35-Client' " Project="..\..\Library\TaskDotNetTwoAndThreeFive\TaskDotNetTwoAndThreeFive.projitems" Label="Shared" />-->
+
+	<Import Condition="'$(TargetFramework)' == 'net35-Client' " Project="..\..\SharedSrc\TaskDotnetThreeFive\TaskDotnetThreeFive.projitems" Label="Shared" />
+	<Import Condition="'$(TargetFramework)' == 'net35-Client' " Project="..\..\SharedSrc\TaskDotnetThreeFivePartial\TaskDotnetThreeFivePartial.projitems" Label="Shared" />
+
+	<Import Condition="'$(TargetFramework)' == 'net20-Client' " Project="..\..\SharedSrc\TaskDotnetTwo\TaskDotnetTwo.projitems" Label="Shared" />
+	<Import Condition="'$(TargetFramework)' == 'net20-Client' " Project="..\..\SharedSrc\TaskDotnetTwoPartial\TaskDotnetTwoPartial.projitems" Label="Shared" />
+
+	<Import Condition="!$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','6.0')) AND !$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','4.6.1'))" Project="..\..\SharedSrc\ValueTuple\ValueTuple.projitems" Label="Shared" />
+	<Import Condition="!$([MSBuild]::VersionGreaterThanOrEquals('$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)'))','6.0'))" Project="..\..\SharedSrc\FrameWorkEngine.Unsafe\FrameWorkEngine.projitems" Label="Shared" />
+	
+	
+</Project>

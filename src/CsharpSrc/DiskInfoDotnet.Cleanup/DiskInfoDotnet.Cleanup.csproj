@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkSingle.props" />
+	<Import Project="$(SolutionDir)_configs/asmSign.props" />
+	
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+	<Target Name="CustomActionsAfterBuild" AfterTargets="Build">
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(SolutionDir)" OverwriteReadOnlyFiles="true" />
+		<Message Importance="High" Text="success full to moved to $(TargetPath)"></Message>
+	</Target>
+
+</Project>

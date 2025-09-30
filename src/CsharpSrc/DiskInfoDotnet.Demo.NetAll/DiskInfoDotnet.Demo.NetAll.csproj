@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkscustom.props" />
+	<Import Project="..\..\SharedSrc\DiskInfoDotnet.ImportantLib.Shared\DiskInfoDotnet.ImportantLib.Shared.projitems" Label="Shared" />
+	<Import Project="..\..\SharedSrc\DiskInfoDotnetParse.Shared\DiskInfoDotnetParse.Shared.projitems" Label="Shared" />
+	<Import Project="$(SolutionDir)_configs/dotnetframeworkAnothers.props" />
+	<Import Project="$(SolutionDir)_configs/ExeConfigs.props" />
+	<Import Project="$(SolutionDir)_configs/asmSign.props" />
+	<Import Project="$(SolutionDir)_configs/finishingElements.props" />
+	
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<ApplicationManifest>$(SolutionDir)app.manifest</ApplicationManifest>
+		<!--<DefineConstants>$(DefineConstants);Debug;Trace</DefineConstants> Condition="Exists('$(TaskUsingFolder)')" -->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\DiskInfoDotnet\DiskInfoDotnet.csproj" />
+	</ItemGroup>
+
+	<Choose>
+		<When Condition="$(TargetFramework.StartsWith('net4'))">
+			<ItemGroup>
+				<Reference Include="Microsoft.CSharp" />
+			</ItemGroup>
+		</When>
+		
+		<Otherwise>
+			<ItemGroup>
+				<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+			</ItemGroup>
+		</Otherwise>
+
+	</Choose>
+
+	
+	<UsingTask TaskName="MainViewModule" AssemblyFile="TaskUsingFolder\DiskInfoDotnet.Related.dll" />
+
+	<Target Name="CustomActionsAfterBuild" AfterTargets="Build">
+		<MainViewModule SolutionDirectory="$(SolutionDir)" GetOutPath="$(OutputPath)" />
+		<Message Text="Successfull to $(TargetPath)" Importance="High" />
+	</Target>
+	
+	
+</Project>

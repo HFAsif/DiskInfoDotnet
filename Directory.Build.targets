@@ -1,0 +1,25 @@
+<Project>
+	<!-- Define a custom target that runs after the build --><!--
+	<Target Name="MyCustomPostBuildTarget" AfterTargets="Build">
+		<Message Text="Executing custom post-build target for $(MSBuildProjectName)" Importance="high" />
+		--><!-- Example: Copy a specific file to the output directory after the build --><!--
+		<Copy SourceFiles="$(SolutionDir)MyCommonFile.txt" DestinationFolder="$(OutputPath)" />
+	</Target>
+
+	--><!-- Override an existing target (e.g., Clean) to add custom cleanup logic --><!--
+	<Target Name="Clean" DependsOnTargets="SupercedeClean">
+		<Message Text="Executing custom clean target for $(MSBuildProjectName)" Importance="high" />
+		--><!-- Example: Delete a specific file during the clean process --><!--
+		<Delete Files="$(OutputPath)MyGeneratedFile.log" />
+	</Target>
+
+	--><!-- Define a target that the overridden Clean target depends on --><!--
+	<Target Name="SupercedeClean">
+		--><!-- Call the original Clean target logic if needed --><!--
+		<MSBuild Projects="$(MSBuildProjectFile)" Targets="Clean" Properties="BuildingProject=false" />
+	</Target>-->
+
+	<PropertyGroup Condition="'$(AllowUnsafeBlocks)' == 'true'">
+		<DefineConstants>$(DefineConstants);_Unsafe_</DefineConstants>
+	</PropertyGroup>
+</Project>

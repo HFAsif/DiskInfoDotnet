@@ -1,0 +1,33 @@
+<Project >
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='net_8_0_Debug|x86'">
+		<OutputPath>$(SolutionDir)Debug\net_8_0_Debug\x86</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='net_8_0_Debug|x64'">
+		<OutputPath>$(SolutionDir)Debug\net_8_0_Debug\x64</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='net_4_8_Debug|x86'">
+		<OutputPath>$(SolutionDir)Debug\net_4_8_Debug\x86</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='net_4_8_Debug|x64'">
+		<OutputPath>$(SolutionDir)Debug\net_4_8_Debug\x64</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='net_8_0_Debug|AnyCPU'">
+		<OutputPath>$(SolutionDir)Debug\net_8_0_Debug\AnyCPU</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='net_4_8_Debug|AnyCPU'">
+		<OutputPath>$(SolutionDir)Debug\net_4_8_Debug\AnyCPU</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+		<OutputPath>$(SolutionDir)Debug\x86</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+		<OutputPath>$(SolutionDir)Debug\x64</OutputPath>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>$(SolutionDir)Debug\AnyCPU</OutputPath>
+	</PropertyGroup>
+</Project>
