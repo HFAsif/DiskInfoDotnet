@@ -23,16 +23,6 @@ public class MainViewModule : Task
 
     public override bool Execute()
     {
-        //if (Attribute.IsDefined(typeof(MainViewModule), typeof(SomeElementsInfos)) && typeof(MainViewModule).GetCustomAttribute<SomeElementsInfos>() is not null and SomeElementsInfos someElementsAttr)
-        //{
-        //    File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "atext.txt"), $"{someElementsAttr.Details}");
-        //}
-        //else
-        //{
-
-
-        //}
-
         var directories = Directory.GetDirectories(GetOutPath);
         var netFourDirs = directories.ToList();
 
@@ -127,7 +117,16 @@ public class MainViewModule : Task
 
 
         }
+        
+        if (Attribute.IsDefined(typeof(MainViewModule), typeof(SomeElementsInfos)) && typeof(MainViewModule).GetCustomAttribute<SomeElementsInfos>() is not null and SomeElementsInfos someElementsAttr)
+        {
+             Log.LogMessage(MessageImportance.High, $"{someElementsAttr.Details}");
+        }
+        else
+        {
 
+            Log.LogError("Getting error in attr");
+        }
         return true;
     }
 
