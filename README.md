@@ -9,7 +9,8 @@ added
 6. device information
 7. using task
 8. delay sign in +
-9. has some more things
+9. using probing privatePath at app.config 
+10. has some more things
 
 To run it on windows xp u have to compile the project with net40 , take a look at dotnetfour.prop , it should be successfull compile with dotnet 4 but will works or not idont know because didnt tested yet ,
 
