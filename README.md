@@ -1,6 +1,7 @@
 Diskinfo is dotnet format of crystaldiskinfo
 
 added
+0. Anycpu 
 1. vs studio 2022 dev powershell
 2. digital signeture at [DiskInfoDotnet.Related]
 3. code optimized
