@@ -2,7 +2,7 @@ Diskinfo is dotnet format of crystaldiskinfo
 
 added
 1. vs studio 2022 dev powershell
-2. digital signeture
+2. digital signeture at [DiskInfoDotnet.Related]
 3. code optimized
 4. device information
 5. using task
