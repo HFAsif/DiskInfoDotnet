@@ -3,8 +3,8 @@ Diskinfo is dotnet format of crystaldiskinfo 50%
 added
 1. Extract Device information from sm management , using json properties 
 2. Anycpu 
-3. vs studio 2022 dev powershell
-4. digital signeture at [DiskInfoDotnet.Related]
+3. vs studio 2022 dev powershell [Digital signeture and other things ]
+4. digital signeture at [DiskInfoDotnet.Related] 
 5. code optimized
 6. device information
 7. using task
