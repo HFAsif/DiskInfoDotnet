@@ -1,4 +1,4 @@
-Diskinfo is dotnet format of crystaldiskinfo
+Diskinfo is dotnet format of crystaldiskinfo 50%
 
 added
 1. Extract Device information from sm management , using json properties 
@@ -20,10 +20,6 @@ u can get information in two format cmd ; args
 exe -E ex {u will get all information which extracted }
 exe -O op {u will get optimized information except bool 0 and null }
 ```
-
-the code ended here 
-<img width="1767" height="206" alt="{D7266C3F-B8AF-4C57-BDD8-3522D43250AE}" src="https://github.com/user-attachments/assets/a4dc49b8-adb2-43d2-87ac-8119ebbc5356" />
-still 50% exist 
 
 example 
 <img width="1920" height="1030" alt="{3F5CD021-19C8-4837-99AD-B5A4740ACD54}" src="https://github.com/user-attachments/assets/214340bd-0b31-47db-93dc-b1bd61271f82" />
