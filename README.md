@@ -1,14 +1,15 @@
 Diskinfo is dotnet format of crystaldiskinfo
 
 added
-0. Anycpu 
-1. vs studio 2022 dev powershell
-2. digital signeture at [DiskInfoDotnet.Related]
-3. code optimized
-4. device information
-5. using task
-6. delay sign in +
-7. has some more things
+1. Extract Device information from sm management , using json properties 
+2. Anycpu 
+3. vs studio 2022 dev powershell
+4. digital signeture at [DiskInfoDotnet.Related]
+5. code optimized
+6. device information
+7. using task
+8. delay sign in +
+9. has some more things
 
 To run it on windows xp u have to compile the project with net40 , take a look at dotnetfour.prop , it should be successfull compile with dotnet 4 but will works or not idont know because didnt tested yet ,
 
