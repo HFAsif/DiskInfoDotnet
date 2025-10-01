@@ -12,10 +12,6 @@ added
 9. using probing privatePath at app.config 
 10. has some more things
 
-To run it on windows xp u have to compile the project with net40 , take a look at dotnetfour.prop , it should be successfull compile with dotnet 4 but will works or not idont know because didnt tested yet ,
-
-select x86 or x64 bit , do not run at AnyCPU , it will be crash or u will get corrupted information , 
-
 u can get information in two format cmd ; args 
 ```
 exe -E ex {u will get all information which extracted }
