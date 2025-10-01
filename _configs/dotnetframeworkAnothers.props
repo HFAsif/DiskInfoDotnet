@@ -1,7 +1,7 @@
 <Project >
 	
 	<PropertyGroup>
-		<TargetFrameworks>$(TargetFrameworks);net40</TargetFrameworks>
+		<!--<TargetFrameworks>$(TargetFrameworks);net40</TargetFrameworks>-->
 	</PropertyGroup>
 
 </Project>
