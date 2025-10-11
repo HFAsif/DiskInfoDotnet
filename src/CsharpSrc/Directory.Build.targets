@@ -13,4 +13,8 @@
 	<PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
 		<SignAssembly>true</SignAssembly>
 	</PropertyGroup>
+
+<PropertyGroup Condition="'$(AllowUnsafeBlocks)' == 'true'">
+	<DefineConstants>$(DefineConstants);_Unsafe_</DefineConstants>
+</PropertyGroup>
 </Project>
