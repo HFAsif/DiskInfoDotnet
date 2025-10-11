@@ -19,7 +19,4 @@
 		<MSBuild Projects="$(MSBuildProjectFile)" Targets="Clean" Properties="BuildingProject=false" />
 	</Target>-->
 
-	<PropertyGroup Condition="'$(AllowUnsafeBlocks)' == 'true'">
-		<DefineConstants>$(DefineConstants);_Unsafe_</DefineConstants>
-	</PropertyGroup>
 </Project>
