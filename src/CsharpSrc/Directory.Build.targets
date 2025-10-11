@@ -1,7 +1,7 @@
 <Project>
 	<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-		
+		<SignAssembly>true</SignAssembly>
 		<!--<AssemblyOriginatorKeyFile>$(SolutionDir)DiskInfoDotnetSignatureKey.snk</AssemblyOriginatorKeyFile>-->
 		
 		<!--<AssemblyOriginatorKeyFile>$(SolutionDir)DiskInfoArtificial.snk</AssemblyOriginatorKeyFile>
@@ -10,9 +10,9 @@
 		 <!--<DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>-->
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
+	<!--<PropertyGroup Condition="$(TargetFramework.StartsWith('net4'))">
 		<SignAssembly>true</SignAssembly>
-	</PropertyGroup>
+	</PropertyGroup>-->
 
 <PropertyGroup Condition="'$(AllowUnsafeBlocks)' == 'true'">
 	<DefineConstants>$(DefineConstants);_Unsafe_</DefineConstants>
