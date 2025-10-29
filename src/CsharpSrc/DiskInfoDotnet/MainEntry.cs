@@ -1,34 +1,52 @@
-﻿namespace DiskInfoDotnet;
+namespace DiskInfoDotnet;
 
 using DiskInfoDotnet.Library;
-using HelperClass;
 using DiskInfoDotnet.Sm.Management;
+using HelperClass;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading;
 
 [WindowsVersionChecker]
 public class MainEntry
 {
-    public static void ExtractionHelper(bool nativeTest, out object ataLists, ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, params string[] args)
+    static WindowsVersionCheckerAttribute RunWinvAttr([Optional] bool Fake_m_bNVMeStorageQuery)
     {
-        Unsafe.SkipInit(out ataLists);
         if ((Attribute.GetCustomAttribute(typeof(MainEntry), typeof(WindowsVersionCheckerAttribute)) is WindowsVersionCheckerAttribute winvAttr && winvAttr is not null))
         {
             if (winvAttr.WindowsVesionChecker())
             {
-                Run(nativeTest, winvAttr, out ataLists, win32_DiskDrive_Infos_List, args);
+                if (Fake_m_bNVMeStorageQuery)
+                {
+                    winvAttr.m_bNVMeStorageQuery = true;
+                }
+
+                return winvAttr;
             }
             else goto errCode;
         }
-        return;
 
     errCode:
         throw new GettingExceptions("invalid operation");
+    }
+
+    public static void Run(out object ataLists, out ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List,
+        [Optional] bool Fake_m_bNVMeStorageQuery, [Optional] bool getDriverInfos, [Optional] bool nativeTest, [Optional] params string[] args)
+    {
+        var loadMScopModule = LoadMScopModule.Create();
+        loadMScopModule.LoadInfos(getDriverInfos);
+        win32_DiskDrive_Infos_List = loadMScopModule.win32_DiskDrive_Infos_List;
+        Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, win32_DiskDrive_Infos_List);
+    }
+
+    static void ExtractionHelper(bool nativeTest, out object ataLists, ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, params string[] args)
+    {
+        Run(nativeTest, RunWinvAttr(), out ataLists, win32_DiskDrive_Infos_List, args);
     }
 
     public static void Run(out object ataLists, ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List)
