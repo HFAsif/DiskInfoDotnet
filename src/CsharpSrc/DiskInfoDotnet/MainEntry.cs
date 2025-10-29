@@ -10,11 +10,24 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Threading;
 
 [WindowsVersionChecker]
 public class MainEntry
 {
+    static readonly bool isAdmin;
+    static MainEntry()
+    {
+#pragma warning disable CA1416 // Validate platform compatibility
+        using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+        {
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+#pragma warning restore CA1416 // Validate platform compatibility
+    }
+
     static WindowsVersionCheckerAttribute RunWinvAttr([Optional] bool Fake_m_bNVMeStorageQuery)
     {
         if ((Attribute.GetCustomAttribute(typeof(MainEntry), typeof(WindowsVersionCheckerAttribute)) is WindowsVersionCheckerAttribute winvAttr && winvAttr is not null))
@@ -35,13 +48,22 @@ public class MainEntry
         throw new GettingExceptions("invalid operation");
     }
 
-    public static void Run(out object ataLists, out ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List,
+    public static void Run(out object ataLists, out ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, out string ExtractionResult,
         [Optional] bool Fake_m_bNVMeStorageQuery, [Optional] bool getDriverInfos, [Optional] bool nativeTest, [Optional] params string[] args)
     {
         var loadMScopModule = LoadMScopModule.Create();
         loadMScopModule.LoadInfos(getDriverInfos);
         win32_DiskDrive_Infos_List = loadMScopModule.win32_DiskDrive_Infos_List;
         Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, win32_DiskDrive_Infos_List);
+
+        if (!isAdmin)
+        {
+            ExtractionResult = "Please run the project or Exe with administrator permission, The Project / Exe not elevated";
+        }
+        else
+        {
+            ExtractionResult = "Wokrs Done, please check the list infos";
+        }
     }
 
     static void ExtractionHelper(bool nativeTest, out object ataLists, ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, params string[] args)
@@ -60,6 +82,7 @@ public class MainEntry
     [STAThread]
     public static void Run(bool nativeTest, WindowsVersionCheckerAttribute windowsVersionCheckerAttr, out object ataLists, ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, params string[] args)
     {
+        
         //ataLists = default;
         Unsafe.SkipInit(out ataLists);
         bool createdNew = false;
