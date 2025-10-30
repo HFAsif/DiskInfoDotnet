@@ -1,6 +1,6 @@
 <Project>
 
-<Import Project="..\Directory.Build.targets" />
+<Import Project="..\..\Directory.Build.targets" />
 
 	<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
