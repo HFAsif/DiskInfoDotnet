@@ -163,7 +163,7 @@ internal class Program
             if (loadMScopModule is null)
                 throw new GettingExceptions(typeof(InfoExtractorStatic), "LoadMScopModule null");
 
-            StaticMethods.GetSMManagerList(out SmmanagerList, loadMScopModule);
+            Sm_StaticViews.GetSMManagerList(out SmmanagerList, loadMScopModule);
             DiskInfoExtractedTime = InfoExtractorStatic.extractTime ?? throw new GettingExceptions(typeof(InfoExtractorStatic), "invalid extraction");
             goto OutPutFullInformation;
         }
