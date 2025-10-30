@@ -48,9 +48,14 @@ internal class Program
 #else
         void
 #endif
-    MainEx(string[] args)
+    Main(string[] args)
     {
+        var DiskInfoExtractedTime = new Stopwatch();
+
+        DiskInfoExtractedTime.Start();
         var IsElevated = DiskInfoDotnet.MainEntry.Run(out var ataLists, out var loadMScopModule, out var extractionResult, true);
+        DiskInfoExtractedTime.Stop();
+
         DiskInfoDotnet.Sm.Management.Sm_StaticViews.GetSMManagerList(out var SmmanagerList, loadMScopModule);
 #if LoggerExist
         logger.LogInformation(extractionResult);
@@ -95,6 +100,15 @@ internal class Program
         System.Console.ReadLine();
 #endif
 
+
+#if LoggerExist
+        logger.LogInformation($"DiskInfo Extracted Time: {DiskInfoExtractedTime}");
+        CastInfos.GenereteCastInfos(loggerFactory.CreateLogger<CastInfos>());
+#else
+        Console.WriteLine($"DiskInfo Extracted Time: {DiskInfoExtractedTime}");
+        CastInfos.GenereteCastInfos();
+#endif
+
     }
 
 #if LoggerExist
@@ -124,7 +138,7 @@ internal class Program
 #else
         void
 #endif
-        Main(string[] args)
+        MainEx(string[] args)
     {
 
         ReadOnlyCollectionBuilder<object> SmmanagerList;
