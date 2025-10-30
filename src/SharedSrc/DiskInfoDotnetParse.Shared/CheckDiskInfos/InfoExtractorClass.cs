@@ -1,4 +1,4 @@
-﻿namespace DiskInfoDotnetParse.Shared.CheckDiskInfos;
+namespace DiskInfoDotnetParse.Shared.CheckDiskInfos;
 
 using CrystalDiskInfoDotnet;
 using CrystalDiskInfoDotnet.CheckDiskInfos;
@@ -56,7 +56,7 @@ internal class InfoExtractorClass : IExtractorClass
             throw new GettingExceptions(typeof(InfoExtractorStatic), "invalid operation");
         }
 
-        StaticMethods.GetSMManagerList(out SmmanagerList, loadMScopModule);
+        Sm_StaticViews.GetSMManagerList(out SmmanagerList, loadMScopModule);
 
     }
 
