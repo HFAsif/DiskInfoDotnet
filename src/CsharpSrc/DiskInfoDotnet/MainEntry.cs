@@ -48,10 +48,8 @@ public class MainEntry
     public static bool Run(out object ataLists, out LoadMScopModule loadMScopModule, out string ExtractionResult,
         [Optional] bool Fake_m_bNVMeStorageQuery, [Optional] bool getDriverInfos, [Optional] bool nativeTest, [Optional] params string[] args)
     {
-        loadMScopModule = LoadMScopModule.Create();
-        loadMScopModule.LoadInfos(getDriverInfos);
+        loadMScopModule = LoadMScopModule.CreateAndLoadInfos(getDriverInfos);
         Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, loadMScopModule.win32_DiskDrive_Infos_List);
-
         ExtractionResult = CheckIsAdmin;
         return IsElevated;
     }
