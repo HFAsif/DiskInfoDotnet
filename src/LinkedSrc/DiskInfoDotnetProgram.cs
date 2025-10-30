@@ -48,7 +48,7 @@ internal class Program
 #else
         void
 #endif
-    Main(string[] args)
+    MainEx(string[] args)
     {
         var IsElevated = DiskInfoDotnet.MainEntry.Run(out var ataLists, out var loadMScopModule, out var extractionResult, true);
         DiskInfoDotnet.Sm.Management.Sm_StaticViews.GetSMManagerList(out var SmmanagerList, loadMScopModule);
@@ -124,7 +124,7 @@ internal class Program
 #else
         void
 #endif
-        MainEx(string[] args)
+        Main(string[] args)
     {
 
         ReadOnlyCollectionBuilder<object> SmmanagerList;
