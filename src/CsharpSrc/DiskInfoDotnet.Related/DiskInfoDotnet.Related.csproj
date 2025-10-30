@@ -11,8 +11,8 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.14.8" />
-	  <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.14.8" />
+	  <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.14.28" />
+	  <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.14.28" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\DiskInfoDotnet.Extension\DiskInfoDotnet.Extension.csproj" />
