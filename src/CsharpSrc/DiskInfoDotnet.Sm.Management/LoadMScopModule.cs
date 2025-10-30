@@ -29,6 +29,13 @@ public class LoadMScopModule
         Win32_USBHub_Infos_List = []; 
     }
 
+    public static LoadMScopModule CreateAndLoadInfos(bool getDriverInfos)
+    {
+        LoadMScopModule loadMScopModule = Create();
+        loadMScopModule.LoadInfos(getDriverInfos);  
+        return loadMScopModule;
+    }
+
     public static LoadMScopModule Create()
     {
         return new LoadMScopModule();
