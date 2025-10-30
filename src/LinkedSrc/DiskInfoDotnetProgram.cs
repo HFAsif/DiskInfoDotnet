@@ -25,6 +25,34 @@ using System.Threading.Tasks;
 
 internal class Program
 {
+    //[System.STAThread]
+//private static void MainEx(string[] args)
+//{
+//    var IsElevated = DiskInfoDotnet.MainEntry.Run(out var ataLists, out var loadMScopModule, out var extractionResult, true);
+//    DiskInfoDotnet.Sm.Management.Sm_StaticViews.GetSMManagerList(out var SmmanagerList, loadMScopModule);
+//    System.Console.WriteLine(extractionResult);
+//    System.Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(SmmanagerList, Newtonsoft.Json.Formatting.Indented));
+//    System.Console.WriteLine(Environment.NewLine + "Extracting Optimized Infos {0} " , Environment.NewLine);
+//    if (IsElevated && ataLists is System.Collections.IEnumerable collection)
+//    {
+//        foreach (var item in collection)
+//        {
+//            item.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).ToList().ForEach(field =>
+//            {
+//                if (new Type[] { typeof(ushort), typeof(uint), typeof(ulong), typeof(byte), typeof(string), typeof(int) }.Contains(field.FieldType)
+//                        && !string.IsNullOrEmpty(field.GetValue(item)?.ToString()) && field.GetValue(item) is string fieldValStr)
+//                {
+//                    if (fieldValStr.Contains("-")) return;
+//                    if (fieldValStr.All(System.Char.IsDigit) && int.TryParse(fieldValStr, out var rs) && rs is 0) return;
+//                    System.Console.WriteLine(field.Name + "  " + (fieldValStr ?? "null"));
+//                }
+//            });
+//        }
+//    }
+
+//    System.Console.ReadLine();
+//}
+    
     [STAThread]
     private static
 
