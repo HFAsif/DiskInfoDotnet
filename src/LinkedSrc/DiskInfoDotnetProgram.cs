@@ -1,4 +1,4 @@
-﻿#region ProgramDemo
+#region ProgramDemo
 
 using CrystalDiskInfoDotnet;
 using CrystalDiskInfoDotnet.CheckDiskInfos;
@@ -25,34 +25,97 @@ using System.Threading.Tasks;
 
 internal class Program
 {
-    //[System.STAThread]
-//private static void MainEx(string[] args)
-//{
-//    var IsElevated = DiskInfoDotnet.MainEntry.Run(out var ataLists, out var loadMScopModule, out var extractionResult, true);
-//    DiskInfoDotnet.Sm.Management.Sm_StaticViews.GetSMManagerList(out var SmmanagerList, loadMScopModule);
-//    System.Console.WriteLine(extractionResult);
-//    System.Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(SmmanagerList, Newtonsoft.Json.Formatting.Indented));
-//    System.Console.WriteLine(Environment.NewLine + "Extracting Optimized Infos {0} " , Environment.NewLine);
-//    if (IsElevated && ataLists is System.Collections.IEnumerable collection)
-//    {
-//        foreach (var item in collection)
-//        {
-//            item.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).ToList().ForEach(field =>
-//            {
-//                if (new Type[] { typeof(ushort), typeof(uint), typeof(ulong), typeof(byte), typeof(string), typeof(int) }.Contains(field.FieldType)
-//                        && !string.IsNullOrEmpty(field.GetValue(item)?.ToString()) && field.GetValue(item) is string fieldValStr)
-//                {
-//                    if (fieldValStr.Contains("-")) return;
-//                    if (fieldValStr.All(System.Char.IsDigit) && int.TryParse(fieldValStr, out var rs) && rs is 0) return;
-//                    System.Console.WriteLine(field.Name + "  " + (fieldValStr ?? "null"));
-//                }
-//            });
-//        }
-//    }
 
-//    System.Console.ReadLine();
-//}
+#if LoggerExist
+    readonly static ILoggerFactory loggerFactory;
+    readonly static ILogger logger;
+#endif
+
+    static Program()
+    {
+#if LoggerExist
+        var _ = CreateLogger<Program>();
+        loggerFactory = _.Item1;
+        logger = _.Item2;
+#endif
+    }
+
     
+    [System.STAThread]
+    private static
+#if LoggerExist
+        async Task
+#else
+        void
+#endif
+    Main(string[] args)
+    {
+        var IsElevated = DiskInfoDotnet.MainEntry.Run(out var ataLists, out var loadMScopModule, out var extractionResult, true);
+        DiskInfoDotnet.Sm.Management.Sm_StaticViews.GetSMManagerList(out var SmmanagerList, loadMScopModule);
+#if LoggerExist
+        logger.LogInformation(extractionResult);
+        logger.LogInformation(Newtonsoft.Json.JsonConvert.SerializeObject(SmmanagerList, Newtonsoft.Json.Formatting.Indented));
+        logger.LogInformation(System.Environment.NewLine + "Extracting Optimized Infos " + System.Environment.NewLine);
+#else
+        System.Console.WriteLine(extractionResult);
+        System.Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(SmmanagerList, Newtonsoft.Json.Formatting.Indented));
+        System.Console.WriteLine(System.Environment.NewLine + "Extracting Optimized Infos {0} ", System.Environment.NewLine);
+#endif
+
+        if (IsElevated && ataLists is System.Collections.IEnumerable collection)
+        {
+            foreach (var item in collection)
+            {
+                item.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).ToList().ForEach(field =>
+                {
+                    if (new Type[] { typeof(ushort), typeof(uint), typeof(ulong), typeof(byte), typeof(string), typeof(int) }.Contains(field.FieldType)
+                            && !string.IsNullOrEmpty(field.GetValue(item)?.ToString()) && field.GetValue(item)?.ToString() is string)
+                    {
+                        if ((field.GetValue(item)?.ToString()).Contains("-")) return;
+                        if ((field.GetValue(item)?.ToString()).All(System.Char.IsDigit) && int.TryParse((field.GetValue(item)?.ToString()), out var rs) && rs is 0) return;
+#if LoggerExist
+                        logger.LogInformation(field.Name + "  " + ((field.GetValue(item)?.ToString()) ?? "null"));
+#else
+                        System.Console.WriteLine(field.Name + "  " + ((field.GetValue(item)?.ToString()) ?? "null"));
+#endif
+                    }
+                });
+#if LoggerExist
+                logger.LogInformation(System.Environment.NewLine);
+                await Task.Delay(500);
+#else
+                System.Console.WriteLine(System.Environment.NewLine);
+#endif
+
+            }
+        }
+
+
+#if !LoggerExist
+        System.Console.ReadLine();
+#endif
+
+    }
+
+#if LoggerExist
+    static (ILoggerFactory, ILogger) CreateLogger<T>() 
+    {
+        using (var loggerFactory = LoggerFactory.Create(static builder =>
+        {
+            builder
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("System", LogLevel.Warning)
+                .AddFilter("DiskInfoArtificial.Test.Program", LogLevel.Debug)
+                .AddConsole();
+        }))
+        {
+            var logger = loggerFactory.CreateLogger<T>();
+            return (loggerFactory, logger);
+        }
+            
+    }
+#endif
+
     [STAThread]
     private static
 
@@ -61,7 +124,7 @@ internal class Program
 #else
         void
 #endif
-        Main(string[] args)
+        MainEx(string[] args)
     {
 
         ReadOnlyCollectionBuilder<object> SmmanagerList;
@@ -78,18 +141,12 @@ internal class Program
 
         ExtractionType extractionType = ExtractionType.None;
 
-#if LoggerExist
-        using var loggerFactory = LoggerFactory.Create(static builder =>
-        {
-            builder
-                .AddFilter("Microsoft", LogLevel.Warning)
-                .AddFilter("System", LogLevel.Warning)
-                .AddFilter("DiskInfoArtificial.Test.Program", LogLevel.Debug)
-                .AddConsole();
-        });
+//#if LoggerExist
+//        var _ = CreateLogger<Program>();
+//        var loggerFactory = _.Item1;    
+//        var logger = _.Item2;
 
-        var logger = loggerFactory.CreateLogger<Program>();
-#endif
+//#endif
 
         if (extractionType == ExtractionType.StaticExtraction)
         {
