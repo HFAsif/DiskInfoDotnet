@@ -48,7 +48,7 @@ internal class Program
 #else
         void
 #endif
-    Main(string[] args)
+    MainEx(string[] args)
     {
         var DiskInfoExtractedTime = new Stopwatch();
 
@@ -138,7 +138,7 @@ internal class Program
 #else
         void
 #endif
-        MainEx(string[] args)
+        Main(string[] args)
     {
 
         ReadOnlyCollectionBuilder<object> SmmanagerList;
