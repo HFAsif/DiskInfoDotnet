@@ -1,4 +1,4 @@
-﻿namespace DiskInfoDotnet.Sm.Management;
+namespace DiskInfoDotnet.Sm.Management;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+[HelperClass.SomeElementsInfos($"{nameof(DiskInfoDotnet.Sm.Management.Sm_StaticViews)} does contains system management static method")]
 public class Sm_StaticViews
 {
     public static void GetSMManagerList(out ReadOnlyCollectionBuilder<object> list, LoadMScopModule loadMScopModule)
