@@ -112,22 +112,22 @@ internal class Program
     }
 
 #if LoggerExist
+    
     static (ILoggerFactory, ILogger) CreateLogger<T>() 
     {
-        using (var loggerFactory = LoggerFactory.Create(static builder =>
-        {
-            builder
-                .AddFilter("Microsoft", LogLevel.Warning)
-                .AddFilter("System", LogLevel.Warning)
-                .AddFilter("DiskInfoArtificial.Test.Program", LogLevel.Debug)
-                .AddConsole();
-        }))
-        {
-            var logger = loggerFactory.CreateLogger<T>();
-            return (loggerFactory, logger);
-        }
-            
+    using var loggerFactory = LoggerFactory.Create(static builder =>
+    {
+    builder
+        .AddFilter("Microsoft", LogLevel.Warning)
+        .AddFilter("System", LogLevel.Warning)
+        .AddFilter("DiskInfoArtificial.Test.Program", LogLevel.Debug)
+        .AddConsole();
+     });
+
+     var logger = loggerFactory.CreateLogger<T>();
+     return (loggerFactory, logger);
     }
+    
 #endif
 
     [STAThread]
