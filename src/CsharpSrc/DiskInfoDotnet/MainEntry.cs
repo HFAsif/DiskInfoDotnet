@@ -16,18 +16,6 @@ using System.Threading;
 [WindowsVersionChecker]
 public class MainEntry
 {
-    static readonly bool isAdmin;
-    static MainEntry()
-    {
-#pragma warning disable CA1416 // Validate platform compatibility
-        using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
-        {
-            WindowsPrincipal principal = new WindowsPrincipal(identity);
-            isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
-        }
-#pragma warning restore CA1416 // Validate platform compatibility
-    }
-
     static WindowsVersionCheckerAttribute RunWinvAttr([Optional] bool Fake_m_bNVMeStorageQuery)
     {
         if ((Attribute.GetCustomAttribute(typeof(MainEntry), typeof(WindowsVersionCheckerAttribute)) is WindowsVersionCheckerAttribute winvAttr && winvAttr is not null))
@@ -48,23 +36,46 @@ public class MainEntry
         throw new GettingExceptions("invalid operation");
     }
 
-    public static void Run(out object ataLists, out ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, out string ExtractionResult,
+    private static readonly string CheckIsAdmin;
+    private static readonly bool IsElevated;
+
+    static MainEntry()
+    {
+        IsElevated = HelperViewsStatic.IsElevated();
+        CheckIsAdmin = IsElevated ? "Wokrs Done, please check the list infos" : "Please run the project or Exe with administrator permission, The Project / Exe not elevated, but sm Info Should be extracted";
+    }
+
+    public static bool Run(out object ataLists, out LoadMScopModule loadMScopModule, out string ExtractionResult,
         [Optional] bool Fake_m_bNVMeStorageQuery, [Optional] bool getDriverInfos, [Optional] bool nativeTest, [Optional] params string[] args)
     {
-        var loadMScopModule = LoadMScopModule.Create();
+        loadMScopModule = LoadMScopModule.Create();
         loadMScopModule.LoadInfos(getDriverInfos);
-        win32_DiskDrive_Infos_List = loadMScopModule.win32_DiskDrive_Infos_List;
-        Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, win32_DiskDrive_Infos_List);
+        Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, loadMScopModule.win32_DiskDrive_Infos_List);
 
-        if (!isAdmin)
-        {
-            ExtractionResult = "Please run the project or Exe with administrator permission, The Project / Exe not elevated";
-        }
-        else
-        {
-            ExtractionResult = "Wokrs Done, please check the list infos";
-        }
+        ExtractionResult = CheckIsAdmin;
+        return IsElevated;
     }
+
+    //public static void Run(out object ataLists, out ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, out string ExtractionResult,
+    //    [Optional] bool Fake_m_bNVMeStorageQuery, [Optional] bool getDriverInfos, [Optional] bool nativeTest, [Optional] params string[] args)
+    //{
+    //    win32_DiskDrive_Infos_List = LoadMScopModule.CreateAndLoadInfos(getDriverInfos).win32_DiskDrive_Infos_List;
+    //    Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, win32_DiskDrive_Infos_List);
+
+    //    ExtractionResult = CheckIsAdmin;
+    //}
+
+
+    //public static void Run(out object ataLists, out ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, out string ExtractionResult,
+    //    [Optional] bool Fake_m_bNVMeStorageQuery, [Optional] bool getDriverInfos, [Optional] bool nativeTest, [Optional] params string[] args)
+    //{
+    //    var loadMScopModule = LoadMScopModule.Create();
+    //    loadMScopModule.LoadInfos(getDriverInfos);
+    //    win32_DiskDrive_Infos_List = loadMScopModule.win32_DiskDrive_Infos_List;
+    //    Run(nativeTest, RunWinvAttr(Fake_m_bNVMeStorageQuery), out ataLists, win32_DiskDrive_Infos_List);
+
+    //    ExtractionResult = CheckIsAdmin;
+    //}
 
     static void ExtractionHelper(bool nativeTest, out object ataLists, ObservableCollection<Win32_DiskDrive_Infos>? win32_DiskDrive_Infos_List, params string[] args)
     {
