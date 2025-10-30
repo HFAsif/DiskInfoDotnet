@@ -14,6 +14,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Security;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 
 public static partial class HelperViewsStatic
 {
@@ -23,8 +24,17 @@ public static partial class HelperViewsStatic
     //    return new(numbers[0], numbers[1], numbers[2], numbers[3]);
     //}
 
-  
-
+    public static bool windowsIdentity()
+    {
+#pragma warning disable CA1416 // Validate platform compatibility
+        using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+        {
+            WindowsPrincipal principal = new WindowsPrincipal(identity);
+            return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+#pragma warning restore CA1416 // Validate platform compatibility
+    }
+    
     [SecurityCritical]
     public static IntPtr GetFunctionPointerForDelegate<TDelegate>(TDelegate d)
     {
