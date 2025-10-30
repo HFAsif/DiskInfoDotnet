@@ -1,5 +1,36 @@
 Diskinfo is dotnet format of crystaldiskinfo 50%
 
+Sample Code
+```
+using System.Linq;
+```
+
+```
+var IsElevated = DiskInfoDotnet.MainEntry.Run(out var ataLists, out var loadMScopModule, out var extractionResult, true);
+DiskInfoDotnet.Sm.Management.Sm_StaticViews.GetSMManagerList(out var SmmanagerList, loadMScopModule);
+System.Console.WriteLine(extractionResult);
+System.Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(SmmanagerList, Newtonsoft.Json.Formatting.Indented));
+System.Console.WriteLine(System.Environment.NewLine + "Extracting Optimized Infos {0} ", System.Environment.NewLine);
+if (IsElevated && ataLists is System.Collections.IEnumerable collection)
+{
+    foreach (var item in collection)
+    {
+        item.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).ToList().ForEach(field =>
+        {
+            if (new System.Type[] { typeof(ushort), typeof(uint), typeof(ulong), typeof(byte), typeof(string), typeof(int) }.Contains(field.FieldType)
+                    && !string.IsNullOrEmpty(field.GetValue(item)?.ToString()) && field.GetValue(item)?.ToString() is string)
+            {
+                if ((field.GetValue(item)?.ToString()).Contains("-")) return;
+                if ((field.GetValue(item)?.ToString()).All(System.Char.IsDigit) && int.TryParse((field.GetValue(item)?.ToString()), out var rs) && rs is 0) return;
+                System.Console.WriteLine(field.Name + "  " + ((field.GetValue(item)?.ToString()) ?? "null"));
+            }
+        });
+        System.Console.WriteLine(System.Environment.NewLine);
+    }
+}
+System.Console.ReadLine();
+```
+
 added
 1. Extract Device information from sm management , using json properties 
 2. Anycpu 
