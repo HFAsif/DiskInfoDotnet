@@ -24,7 +24,7 @@ public static partial class HelperViewsStatic
     //    return new(numbers[0], numbers[1], numbers[2], numbers[3]);
     //}
 
-    public static bool windowsIdentity()
+    public static bool IsElevated()
     {
 #pragma warning disable CA1416 // Validate platform compatibility
         using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
