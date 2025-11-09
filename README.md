@@ -1,5 +1,7 @@
 Diskinfo is dotnet format of crystaldiskinfo 50%
 
+https://www.nuget.org/packages/DiskInfoDotnet
+
 Sample Code
 ```
 using System.Linq;
