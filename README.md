@@ -20,11 +20,10 @@ if (IsElevated && ataLists is System.Collections.IEnumerable collection)
         item.GetType().GetFields(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).ToList().ForEach(field =>
         {
             if (new System.Type[] { typeof(ushort), typeof(uint), typeof(ulong), typeof(byte), typeof(string), typeof(int) }.Contains(field.FieldType)
-                    && !string.IsNullOrEmpty(field.GetValue(item)?.ToString()) && field.GetValue(item)?.ToString() is string)
+                    && field.GetValue(item)?.ToString() is not null and string __ && __ != string.Empty)
             {
-                if ((field.GetValue(item)?.ToString()).Contains("-")) return;
-                if ((field.GetValue(item)?.ToString()).All(System.Char.IsDigit) && int.TryParse((field.GetValue(item)?.ToString()), out var rs) && rs is 0) return;
-                System.Console.WriteLine(field.Name + "  " + ((field.GetValue(item)?.ToString()) ?? "null"));
+                if (((__).Contains("-")) || (((__).All(System.Char.IsDigit) && int.TryParse((__), out var rs) && rs is 0))) return;
+                System.Console.WriteLine(field.Name + "  " + ((__) ?? "null"));
             }
         });
         System.Console.WriteLine(System.Environment.NewLine);
